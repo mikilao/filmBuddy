@@ -38,7 +38,7 @@ public class ActorsController {
         try {
             con = DriverManager.getConnection(url, username, password);
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM actor ");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM actor join film_actor using(actor_id) join film using (film_id)");
             while (rs.next()) {
                 // create a new Actor object
                 Actor newActor = new Actor();
